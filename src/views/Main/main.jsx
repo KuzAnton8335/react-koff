@@ -1,3 +1,1 @@
-export const Main = () =>(
-	<main></main>
-)
+export const Main = () => <main>Main</main>;

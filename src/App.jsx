@@ -1,11 +1,13 @@
-import { Header } from "./views/Header/header";
+import { Footer } from "./views/Footer/Footer";
+import { Header } from "./views/Header/Header";
+import { Main } from "./views/Main/Main";
 
-
-const App = () => (
-	<>
-		<Header></Header>
-	</>
+export const App = () => (
+  <>
+    <Header />
+    <Main />
+    <Footer />
+  </>
 );
-
 
 export default App;
