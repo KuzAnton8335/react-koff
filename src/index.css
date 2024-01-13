@@ -41,17 +41,26 @@ html {
   --second-font: "Inter", sans-serif;
 }
 
-body {
+body{
+	font-family: "Open-Sans", sans-serif;
+	color: var(--text-black);
+	font-family: Open Sans;
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 1.2;
+	background-color: var(--white-color);
+}
+
+#root {
   position: relative;
   min-width: 320px;
   min-height: 100dvh;
-  font-family: "Open-Sans", sans-serif;
-  color: var(--text-black);
-  font-family: Open Sans;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.2;
-  background-color: var(--white-color);
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
 }
 
 img,

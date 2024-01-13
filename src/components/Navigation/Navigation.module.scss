@@ -1,21 +1,38 @@
 .navigation {
-  display: flex;
-  gap: 16px;
+	display: flex;
+	gap: 16px;
 }
 
 .link {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  flex-direction: row-reverse;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	flex-direction: row-reverse;
+	outline-offset: 4px;
+	border-radius: 4px;
+
+	@media (min-width: 580px) {
+		flex-direction: row;
+	}
 }
-
+.link,
 .text {
-  position: fixed;
-  transform: scale(0);
+	&:hover,
+	&:active {
+		color: #780096;
+	}
 
-  @media (min-width: 580px) {
-    position: unset;
-    transform: scale(1);
-  }
+	&:focus-visible {
+		color: #780096;
+		outline-color: #780096;
+	}
+}
+.text {
+	position: fixed;
+	transform: scale(0);
+
+	@media (min-width: 580px) {
+		position: unset;
+		transform: scale(1);
+	}
 }

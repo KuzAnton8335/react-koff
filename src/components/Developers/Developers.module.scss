@@ -1,0 +1,32 @@
+.developers {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.item {
+	font-size: 12px;
+	@media (min-width: 580px) {
+		font-size: 14px;
+	}
+}
+
+.link {
+	font-size: 12px;
+	border-radius: 4px;
+	outline: 1px solid transparent;
+	transition:
+		color 0.3s ease-in-out,
+		outline-color 0.3s ease-in-out;
+	@media (min-width: 580px) {
+		font-size: 14px;
+	}
+	&:hover,
+	&:active {
+		color: #780096;
+	}
+	&:focus-visible {
+		color: #780096;
+		outline-color: #780096;
+	}
+}

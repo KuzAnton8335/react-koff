@@ -1,3 +1,12 @@
 .img {
-  width: 100%;
+	width: 100%;
+}
+
+.link {
+	border-radius: 4px;
+
+	&:focus-visible {
+		color: #780096;
+		outline-color: #780096;
+	}
 }
