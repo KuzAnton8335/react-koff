@@ -61,6 +61,10 @@ svg {
   height: auto;
 }
 
+svg {
+  max-height: 100%;
+}
+
 button {
   padding: 0;
   cursor: pointer;
