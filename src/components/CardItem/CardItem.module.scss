@@ -1,0 +1,110 @@
+.card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.cardlinkimg {
+	display: block;
+	margin-bottom: 12px;
+
+	@media (min-width: 580px) {
+		margin-bottom: 16px;
+	}
+}
+
+.cardimg {
+	width: 100%;
+	-o-object-fit: cover;
+	object-fit: cover;
+	border-radius: 16px;
+	aspect-ratio: 7/6;
+
+	@media (min-width: 580px) {
+		aspect-ratio: 23/20;
+	}
+
+	@media (min-width: 820px) {
+		aspect-ratio: 151/125;
+	}
+}
+
+.cardinfo {
+	flex-grow: 1;
+	@media (min-width: 580px) {
+		display: flex;
+		gap: 5px;
+		margin-bottom: 20px;
+		justify-content: space-between;
+	}
+}
+
+.cardtitle {
+	margin-bottom: 4px;
+	font-size: 12px;
+	font-weight: 400;
+
+	@media (min-width: 580px) {
+		padding-top: 3px;
+		font-size: 16px;
+		margin-bottom: 0;
+	}
+}
+
+.cardprice {
+	margin-bottom: 12px;
+	font-size: 16px;
+
+	@media (min-width: 580px) {
+		font-size: 20px;
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
+
+.cardbtn {
+	width: 100%;
+	padding: 12px 24px;
+	color: #780096;
+	border-radius: 32px;
+	border: 1px solid #780096;
+
+	&:hover {
+		color: #fff;
+		border-color: #9200b7;
+		background-color: #9200b7;
+	}
+
+	&:active {
+		color: #c0f;
+		border-color: #c0f;
+		background-color: transparent;
+	}
+}
+
+.cardfavorite {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+
+	&:hover {
+		color: #780096;
+	}
+
+	&:active {
+		color: #c0f;
+	}
+}
+
+.cardfavorite svg {
+	fill: #fff;
+
+	&:hover {
+		fill: #780096;
+	}
+
+	&:active {
+		fill: #c0f;
+	}
+}
