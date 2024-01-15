@@ -16,7 +16,7 @@ export const fetchCategories = createAsyncThunk(
     );
 
     if (!response.ok) {
-      throw new Error("Не удалось получить каталог! ");
+      throw new Error("Не удалось получить каталог!");
     }
 
     return response.json();

@@ -1,15 +1,23 @@
 import s from './CardItem.module.scss';
 
-export const CardItem = () => (
+export const CardItem = ({ data }) => (
 	<article className={`${s.card} ${s.goodscard}`}>
-		<a href="#" className={`${s.link} ${s.cardlinkimg}`}>
-			<img src="/img/photo.jpg" alt="фото товара" className={s.cardimg} />
-		</a>
+		{data.map((item) => (
+			<a href={`/products?/slug=${item}`} className={`${s.link} ${s.cardlinkimg}`}>
+				<img src={`/products?/slug=${item}`} alt="фото товара" className={s.cardimg} />
+			</a>
+		))}
 		<div className={s.cardinfo}>
+
 			<h3 className={s.cardtitle}>
-				<a href="#" className={s.link}>Прямой диван OSCAR</a>
+				{data.map((item) => (
+					<a href={`/products?/slug=${item}`} className={s.link}>{item}</a>
+				))}
 			</h3>
-			<p className={s.cardprice}>3 194 ₽</p>
+			{data.map((item) => (
+				<p className={s.cardprice}>{item}</p>
+			))}
+
 		</div>
 		<button className={s.cardbtn}>В корзину</button>
 		<button className={s.cardfavorite}>
