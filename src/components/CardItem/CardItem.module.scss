@@ -5,7 +5,7 @@
 	height: 100%;
 }
 
-.cardlinkimg {
+.link {
 	display: block;
 	margin-bottom: 12px;
 
@@ -14,9 +14,8 @@
 	}
 }
 
-.cardimg {
+.img {
 	width: 100%;
-	-o-object-fit: cover;
 	object-fit: cover;
 	border-radius: 16px;
 	aspect-ratio: 7/6;
@@ -30,17 +29,17 @@
 	}
 }
 
-.cardinfo {
+.info {
 	flex-grow: 1;
+
 	@media (min-width: 580px) {
 		display: flex;
 		gap: 5px;
 		margin-bottom: 20px;
-		justify-content: space-between;
 	}
 }
 
-.cardtitle {
+.title {
 	margin-bottom: 4px;
 	font-size: 12px;
 	font-weight: 400;
@@ -52,18 +51,17 @@
 	}
 }
 
-.cardprice {
+.price {
 	margin-bottom: 12px;
 	font-size: 16px;
 
 	@media (min-width: 580px) {
 		font-size: 20px;
-		margin-top: 0;
 		margin-bottom: 0;
 	}
 }
 
-.cardbtn {
+.btn {
 	width: 100%;
 	padding: 12px 24px;
 	color: #780096;
@@ -71,7 +69,7 @@
 	border: 1px solid #780096;
 
 	&:hover {
-		color: #fff;
+		color: #ffffff;
 		border-color: #9200b7;
 		background-color: #9200b7;
 	}
@@ -83,28 +81,27 @@
 	}
 }
 
-.cardfavorite {
+.favorite {
 	position: absolute;
 	top: 12px;
 	right: 12px;
 
-	&:hover {
+	svg {
+		fill: #ffffff;
+	}
+
+	&:hover,
+	&_active {
 		color: #780096;
+		svg {
+			fill: #780096;
+		}
 	}
 
 	&:active {
 		color: #c0f;
-	}
-}
-
-.cardfavorite svg {
-	fill: #fff;
-
-	&:hover {
-		fill: #780096;
-	}
-
-	&:active {
-		fill: #c0f;
+		svg {
+			fill: #c0f;
+		}
 	}
 }

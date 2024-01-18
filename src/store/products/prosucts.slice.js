@@ -1,13 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { API_URL } from "../../const.js";
 
-export const fetchCategories = createAsyncThunk(
-	"products/fetchCategories",
+export const fetchProducts = createAsyncThunk(
+	"products/fetchProducts",
 	async (_, thunkAPI) => {
 		const state = thunkAPI.getState();
 		const token = state.auth.accessToken;
 
 		const response = await fetch(
-			"https://koff-api.vercel.app/api/products",
+			`${API_URL}api/products`,
 			{
 				headers: {
 					Authorization: `Bearer ${token}`,
@@ -16,7 +17,7 @@ export const fetchCategories = createAsyncThunk(
 		);
 
 		if (!response.ok) {
-			throw new Error("Не удалось получить продукт!");
+			throw new Error("Не удалось получить продукты!");
 		}
 
 		return response.json();
@@ -29,22 +30,22 @@ const initialState = {
 	error: null,
 };
 
-const productSlice = createSlice({
+export const productSlice = createSlice({
 	name: "products",
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
 		builder
-			.addCase(fetchCategories.pending, (state) => {
+			.addCase(fetchProducts.pending, (state) => {
 				state.loading = true;
 				state.error = null;
 			})
-			.addCase(fetchCategories.fulfilled, (state, action) => {
+			.addCase(fetchProducts.fulfilled, (state, action) => {
 				state.data = action.payload;
 				state.loading = false;
 				state.error = null;
 			})
-			.addCase(fetchCategories.rejected, (state, action) => {
+			.addCase(fetchProducts.rejected, (state, action) => {
 				state.loading = false;
 				state.error = action.error.message;
 			});

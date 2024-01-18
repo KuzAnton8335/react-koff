@@ -8,9 +8,9 @@ export const Goods = ({ data }) => (
 		<Container>
 			<h2 className={`${s.title} visually-hidden`}>Список товаров</h2>
 			<ul className={s.list}>
-				{data.map((i) => (
-					<li className={s.item} key={i}>
-						<CardItem />
+				{data.map((item) => (
+					<li className={s.item} key={item.id}>
+						<CardItem {...item} />
 					</li>
 				))}
 			</ul>
