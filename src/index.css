@@ -1,4 +1,3 @@
-
 /* inter-regular - cyrillic_latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
@@ -104,4 +103,11 @@ fieldset {
 .visually-hidden {
   position: fixed;
   transform: scale(0);
+}
+
+main {
+  padding-bottom: 80px;
+  @media (min-width: 820px) {
+    padding-bottom: 100px;
+  }
 }

@@ -1,7 +1,7 @@
 import { Logo } from "../../components/Logo/Logo.jsx";
 import { Navigation } from "../../components/Navigation/Navigation.jsx";
 import { SearchForm } from "../../components/SearchForm/SearchForm.jsx";
-import { Container } from "../Container/container.jsx";
+import { Container } from "../Container/container";
 import s from "./Header.module.scss";
 
 export const Header = () => (
