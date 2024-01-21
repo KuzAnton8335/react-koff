@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { API_URL } from "../../const.js";
 
 export const fetchProduct = createAsyncThunk(
-	"products/fetchProduct",
+	"product/fetchProduct",
 	async (id, thunkAPI) => {
 		const state = thunkAPI.getState();
 		const token = state.auth.accessToken;

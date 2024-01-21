@@ -6,29 +6,30 @@ import { Container } from "../../views/Container/Container";
 import s from "./Catalog.module.scss";
 
 export const Catalog = () => {
-  const dispatch = useDispatch();
-  const { data, loading, error } = useSelector((state) => state.categories);
+	const dispatch = useDispatch();
+	const { data, loading, error } = useSelector((state) => state.categories);
 
-  useEffect(() => {
-    dispatch(fetchCategories());
-  }, [dispatch]);
+	useEffect(() => {
+		dispatch(fetchCategories());
+	}, [dispatch]);
 
-  if (loading) return <div>Загрузка...</div>;
-  if (error) return <div>Ошибка:{error}</div>;
+	if (loading) return <div>Загрузка...</div>;
+	if (error) return <div>Ошибка:{error}</div>;
+	if (!data) return <div>Нет данных...</div>;
 
-  return (
-    <nav className={s.catalog}>
-      <Container className={s.container}>
-        <ul className={s.list}>
-          {data.map((item, i) => (
-            <li className={s.item} key={i}>
-              <Link to={`/category?/slug=${item}`} className={s.link}>
-                {item}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </Container>
-    </nav>
-  );
+	return (
+		<nav className={s.catalog}>
+			<Container className={s.container}>
+				<ul className={s.list}>
+					{data.map((item, i) => (
+						<li className={s.item} key={i}>
+							<Link to={`/category?/slug=${item}`} className={s.link}>
+								{item}
+							</Link>
+						</li>
+					))}
+				</ul>
+			</Container>
+		</nav>
+	);
 };
