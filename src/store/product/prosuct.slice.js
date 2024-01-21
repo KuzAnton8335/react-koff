@@ -1,13 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { API_URL } from "../../const.js";
 
-export const fetchProducts = createAsyncThunk(
-	"products/fetchProducts",
-	async (_, thunkAPI) => {
+export const fetchProduct = createAsyncThunk(
+	"products/fetchProduct",
+	async (id, thunkAPI) => {
 		const state = thunkAPI.getState();
 		const token = state.auth.accessToken;
 
-		const response = await fetch(`${API_URL}api/products`, {
+		const response = await fetch(`${API_URL}api/product/${id}`, {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
@@ -17,10 +17,10 @@ export const fetchProducts = createAsyncThunk(
 			if (response.status === 401) {
 				return thunkAPI.rejectWithValue({
 					status: response.status,
-					error: "Не удалось загрузить продукты!"
+					error: "Не удалось загрузить товар!"
 				})
 			}
-			throw new Error("Не удалось загрузить продукты!");
+			throw new Error("Не удалось загрузить товар!");
 		}
 
 		return response.json();
@@ -28,27 +28,27 @@ export const fetchProducts = createAsyncThunk(
 );
 
 const initialState = {
-	data: [],
+	data: null,
 	loading: false,
 	error: null,
 };
 
 export const productSlice = createSlice({
-	name: "products",
+	name: "product",
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
 		builder
-			.addCase(fetchProducts.pending, (state) => {
+			.addCase(fetchProduct.pending, (state) => {
 				state.loading = true;
 				state.error = null;
 			})
-			.addCase(fetchProducts.fulfilled, (state, action) => {
+			.addCase(fetchProduct.fulfilled, (state, action) => {
 				state.data = action.payload;
 				state.loading = false;
 				state.error = null;
 			})
-			.addCase(fetchProducts.rejected, (state, action) => {
+			.addCase(fetchProduct.rejected, (state, action) => {
 				state.loading = false;
 				state.error = action.error.message;
 			});

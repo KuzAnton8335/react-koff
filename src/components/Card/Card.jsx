@@ -1,71 +1,31 @@
 
-import { useState } from "react";
-import 'swiper/css';
-import { Thumbs } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Container } from "../../views/Container/Container";
-import s from "./card.module.scss";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import 'swiper/css';
+import { fetchProduct } from "../../store/product/prosuct.slice.js";
+import { Container } from "../../views/Container/Container";
+import { Slider } from '../Slider/Slider';
+import s from "./card.module.scss";
 
 
 export const Card = () => {
-	const [mainSwiper, setMainSwiper] = useState(null);
-	const [thumbsSwiper, setThumbsSwiper] = useState(null);
-	const {productId} = useParams()
+	const { productId } = useParams()
+	const dispath = useDispatch();
+	const { data, loading, error } = useSelector(state => state.product);
+	useEffect(() => {
+		dispath(fetchProduct(productId))
+	}, [dispath, productId])
+
+	if (loading) return <div>Загрузка...</div>;
+	if (error) return <div>Ошибка:{error}</div>;
+
+	console.log(data);
 	return (
 		<section className={s.card}>
 			<Container className={s.container}>
 				<h2 className={s.title}>Кресло с подлокотниками</h2>
-				<div className={s.picture}>
-					<div className={s.sliderMain}>
-						<Swiper modules={[Thumbs]} thumbs={{ swiper: thumbsSwiper }}
-							onSwiper={setMainSwiper}
-							spaceBetween={10}>
-							<SwiperSlide>
-								<img src="/img/photo-sl-1.jpg" alt="кресло" />
-							</SwiperSlide>
-							<SwiperSlide>
-								<img src="/img/photo-sl-1.jpg" alt="кресло" />
-							</SwiperSlide>
-							<SwiperSlide>
-								<img src="/img/photo-sl-1.jpg" alt="кресло" />
-							</SwiperSlide>
-							<SwiperSlide>
-								<img src="/img/photo-sl-1.jpg" alt="кресло" />
-							</SwiperSlide>
-							<SwiperSlide>
-								<img src="/img/photo-sl-1.jpg" alt="кресло" />
-							</SwiperSlide>
-						</Swiper>
-						<button onClick={() => mainSwiper.slideNext()}>next</button>
-						<button onClick={() => mainSwiper.slidePrev()} >prev</button>
-					</div>
-
-					<div className={s.sliderThumbnails}>
-						<Swiper onSwiper={setThumbsSwiper}
-							modules={[Thumbs]}
-							watchSlidesProgress
-							spaceBetween={14}
-							slidesPerView={4}
-						>
-							<SwiperSlide>
-								<img src="/img/photo-sl-1.jpg" alt="кресло" />
-							</SwiperSlide>
-							<SwiperSlide>
-								<img src="/img/photo-sl-1.jpg" alt="кресло" />
-							</SwiperSlide>
-							<SwiperSlide>
-								<img src="/img/photo-sl-1.jpg" alt="кресло" />
-							</SwiperSlide>
-							<SwiperSlide>
-								<img src="/img/photo-sl-1.jpg" alt="кресло" />
-							</SwiperSlide>
-							<SwiperSlide>
-								<img src="/img/photo-sl-1.jpg" alt="кресло" />
-							</SwiperSlide>
-						</Swiper>
-					</div>
-				</div>
+				<Slider data={data} />
 				<div className={s.info}>
 					<p className={s.price}>{"5000".toLocaleString()}&nbsp;₽</p>
 					<p className={s.article}>арт. 84348945757</p>

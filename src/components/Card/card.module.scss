@@ -1,3 +1,133 @@
 .card {
-	display: block;
+	padding-top: 24px;
+
+	@media (min-width: 580px) {
+		padding-top: 28px;
+	}
+
+	@media (min-width: 820px) {
+		padding-top: 40px;
+	}
+}
+
+.container {
+	@media (min-width: 820px) {
+		display: grid;
+		grid-template-columns: 66% 1fr;
+		gap: 40px 16px;
+	}
+}
+
+.title {
+	font-size: 24px;
+	font-weight: 700;
+	margin-bottom: 24px;
+
+	@media (min-width: 580px) {
+		font-size: 32px;
+	}
+
+	@media (min-width: 820px) {
+		grid-column: 1/-1;
+		margin-bottom: 0;
+	}
+}
+
+.info {
+	@media (min-width: 820px) {
+		grid-column: 2/3;
+	}
+}
+
+.price {
+	font-size: 20px;
+	margin-bottom: 12px;
+}
+
+.article {
+	display: inline-block;
+	padding: 4px 8px;
+	border-radius: 32px;
+	background-color: #eeeff2;
+	margin-bottom: 24px;
+}
+
+.characteristicsTitle {
+	font-size: 16px;
+	font-weight: 400;
+	margin-bottom: 4px;
+}
+
+.characteristics-table {
+	margin-bottom: 24px;
+}
+
+.btns {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.btn {
+	flex-grow: 1;
+	padding: 12px 24px;
+	color: #fff;
+	border: 1px solid transparent;
+	background-color: #780096;
+	border-radius: 32px;
+
+	&:hover {
+		background-color: #9200b7;
+	}
+
+	&:focus-visible {
+		border-color: #c0f;
+	}
+}
+
+.like {
+	width: 16px;
+	height: 16px;
+
+	svg {
+		fill: #ffffff;
+	}
+
+	&:hover,
+	&_active {
+		color: #780096;
+
+		svg {
+			fill: #780096;
+		}
+	}
+
+	&:active {
+		color: #c0f;
+
+		svg {
+			fill: #c0f;
+		}
+	}
+}
+
+.table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-bottom: 24px;
+}
+
+.row {
+	border-bottom: 1px solid #eeeff2;
+}
+
+.field {
+	padding: 8px 0;
+	color: #969eae;
+}
+
+.value {
+	padding: 8px 0;
+	text-align: right;
+	color: #1c1c1c;
 }
