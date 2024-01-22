@@ -14,7 +14,13 @@ export const fetchProducts = createAsyncThunk(
     });
 
     if (!response.ok) {
-      throw new Error("Не удалось получить продукты!");
+      if (response.status === 401) {
+        return thunkAPI.rejectWithValue({
+          status: response.status,
+          error: "Не удалось загрузить продукты!",
+        });
+      }
+      throw new Error("Не удалось загрузить продукты!");
     }
 
     return response.json();
@@ -27,7 +33,7 @@ const initialState = {
   error: null,
 };
 
-export const productSlice = createSlice({
+export const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {},
@@ -49,4 +55,4 @@ export const productSlice = createSlice({
   },
 });
 
-export default productSlice.reducer;
+export default productsSlice.reducer;
