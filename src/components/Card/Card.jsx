@@ -23,11 +23,11 @@ export const Card = () => {
   return (
     <section className={s.card}>
       <Container className={s.container}>
-        <h2 className={s.title}>Кресло с подлокотниками</h2>
+        <h2 className={s.title}>{data.name}</h2>
         <Slider data={data} />
         <div className={s.info}>
-          <p className={s.price}>{"5000".toLocaleString()}&nbsp;₽</p>
-          <p className={s.article}>арт. 84348945757</p>
+          <p className={s.price}>{data.price.toLocaleString()}&nbsp;₽</p>
+          <p className={s.article}>арт. {data.article}</p>
           <div className={s.characteristics}>
             <h3 className={s.characteristicsTitle}>Общие характеристики</h3>
             <table className={s.table}>

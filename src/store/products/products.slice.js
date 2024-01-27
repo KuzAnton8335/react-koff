@@ -61,7 +61,7 @@ export const productsSlice = createSlice({
           state.pagination = null;
         } else {
           state.data = action.payload.data;
-          state.pagination = action.payload.paginaton;
+          state.pagination = action.payload.pagination;
         }
 
         state.loading = false;
