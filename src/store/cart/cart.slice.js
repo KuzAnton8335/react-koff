@@ -64,6 +64,35 @@ const cartSlice = createSlice({
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
-		builder.addCase()
+		builder
+			.addCase(fetchCart.pending, (state) => {
+				state.loadingFetch = true;
+			})
+			.addCase(fetchCart.fulfilled, (state, action) => {
+				console.log(action.payload);
+				state.loadingFetch = false;
+				state.products = action.payload.products;
+				state.totalPrice = action.payload.totalPrice;
+				state.totalCount = action.payload.totalCount;
+			})
+			.addCase(fetchCart.rejected, (state, action) => {
+				state.loadingFetch = false;
+				state.error = action.payload;
+			})
+
+			.addCase(addProductToCart.pending, (state) => {
+				state.loadingAdd = true;
+			})
+			.addCase(addProductToCart.fulfilled, (state, action) => {
+				state.loadingAdd = false;
+				state.totalCount = action.payload.totalCount;
+				state.products.push(action.payload.product);
+			})
+			.addCase(addProductToCart.rejected, (state, action) => {
+				state.loadingAdd = false;
+				state.error = action.payload;
+			});
 	},
-})
+});
+
+export default cartSlice.reducer;
